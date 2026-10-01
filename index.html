@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
 <head>
 <meta charset="UTF-8">
 
@@ -15,17 +14,13 @@
 
 <style>
 
-/* =========================
-   基本設定
-========================= */
-
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   margin: 0;
-
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -38,123 +33,135 @@ body {
 }
 
 button,
-a {
-  font: inherit;
-}
-
-button {
-  -webkit-tap-highlight-color: transparent;
+select {
+  font-family: inherit;
 }
 
 .app {
   max-width: 480px;
   min-height: 100vh;
-
   margin: auto;
 
   padding:
     max(24px, env(safe-area-inset-top))
-    20px
+    22px
     max(35px, env(safe-area-inset-bottom));
 }
 
 
-/* =========================
+/* ================================
    頂部
-========================= */
+================================ */
 
 .header {
-
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
 
-  gap: 12px;
+  margin-bottom: 38px;
 }
 
 .logo {
-
   font-size: 18px;
-
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .location {
-
-  border: 0;
-
   background: white;
 
-  padding: 10px 13px;
+  padding: 10px 14px;
 
   border-radius: 100px;
 
-  font-size: 13px;
-
-  color: #51493F;
+  font-size: 14px;
 
   box-shadow:
-    0 5px 20px
-    rgba(0,0,0,.06);
-}
-
-.location.ready {
-
-  background: #EAF4E6;
-
-  color: #3E6736;
+    0 5px 20px rgba(0,0,0,.05);
 }
 
 
-/* =========================
+/* ================================
    首頁
-========================= */
+================================ */
 
 .hero {
-
   text-align: center;
-
-  padding-top: 42px;
 }
 
 .emoji {
-
-  font-size: 68px;
-
+  font-size: 70px;
   margin-bottom: 14px;
 }
 
 h1 {
-
   font-size: 38px;
 
-  line-height: 1.12;
+  line-height: 1.15;
 
   margin: 0;
 
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
 }
 
 .subtitle {
-
   margin-top: 14px;
 
   color: #81786C;
 
-  font-size: 15px;
+  font-size: 16px;
 
   line-height: 1.65;
 }
 
 
-/* =========================
+/* ================================
+   預算
+================================ */
+
+.budget-area {
+  margin-top: 27px;
+  text-align: left;
+}
+
+.budget-title {
+  font-size: 13px;
+
+  color: #92897D;
+
+  margin-bottom: 9px;
+
+  padding-left: 3px;
+}
+
+.budget-select {
+  width: 100%;
+
+  border: 0;
+
+  outline: 0;
+
+  appearance: none;
+
+  background: white;
+
+  padding: 15px 17px;
+
+  border-radius: 17px;
+
+  font-size: 15px;
+
+  color: #39332C;
+
+  box-shadow:
+    0 6px 20px rgba(77,56,27,.06);
+}
+
+
+/* ================================
    主按鈕
-========================= */
+================================ */
 
 .main-button {
-
   width: 100%;
 
   border: 0;
@@ -165,162 +172,160 @@ h1 {
 
   padding: 19px;
 
-  margin-top: 28px;
+  margin-top: 22px;
 
   border-radius: 20px;
 
   font-size: 18px;
 
-  font-weight: 850;
+  font-weight: 800;
 
   cursor: pointer;
 }
 
 .main-button:disabled {
-
-  opacity: .60;
+  opacity: .65;
 }
 
+
+/* ================================
+   狀態
+================================ */
+
 .status {
+  min-height: 48px;
 
-  margin: 15px 5px 0;
+  margin-top: 17px;
 
-  color: #8D8276;
+  color: #8A8175;
 
   font-size: 14px;
 
-  line-height: 1.5;
-
-  min-height: 22px;
+  line-height: 1.6;
 }
 
 
-/* =========================
-   搜尋結果
-========================= */
+/* ================================
+   餐廳結果卡片
+================================ */
 
-.results {
-
+.result-card {
   display: none;
-
-  margin-top: 30px;
-}
-
-.results.show {
-
-  display: block;
-}
-
-.result-title {
-
-  font-size: 21px;
-
-  font-weight: 850;
-
-  margin-bottom: 14px;
-}
-
-.cards {
-
-  display: grid;
-
-  gap: 12px;
-}
-
-
-/* =========================
-   餐廳卡片
-========================= */
-
-.card {
-
-  background: white;
-
-  border-radius: 22px;
-
-  padding: 18px;
 
   text-align: left;
 
+  background: white;
+
+  border-radius: 28px;
+
+  margin-top: 25px;
+
+  padding: 25px 22px;
+
   box-shadow:
-    0 9px 28px
-    rgba(77,56,27,.07);
+    0 12px 35px rgba(77,56,27,.08);
 }
 
-.card-top {
-
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: flex-start;
-
-  gap: 10px;
+.result-card.show {
+  display: block;
 }
 
-.restaurant {
+.result-label {
+  font-size: 13px;
 
-  font-size: 18px;
+  color: #9A9186;
+
+  margin-bottom: 9px;
+}
+
+.restaurant-name {
+  font-size: 26px;
+
+  line-height: 1.3;
 
   font-weight: 850;
 
-  line-height: 1.35;
+  margin-bottom: 8px;
 }
 
-.tag {
+.restaurant-type {
+  color: #756D63;
 
-  flex-shrink: 0;
+  font-size: 15px;
 
-  background: #F6EFE6;
+  margin-bottom: 18px;
+}
 
-  padding: 6px 9px;
 
-  border-radius: 100px;
+/* ================================
+   資訊列
+================================ */
 
-  color: #756A5D;
+.info-grid {
+  display: grid;
 
+  grid-template-columns:
+    repeat(2, minmax(0,1fr));
+
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+.info-box {
+  background: #FFF8EE;
+
+  border-radius: 15px;
+
+  padding: 13px;
+
+  min-height: 70px;
+}
+
+.info-title {
   font-size: 12px;
+
+  color: #A0978B;
+
+  margin-bottom: 5px;
 }
 
-.meta {
-
-  margin-top: 8px;
-
-  color: #81786C;
-
+.info-value {
   font-size: 14px;
 
-  line-height: 1.55;
-}
+  font-weight: 700;
 
-.navigate {
-
-  display: block;
-
-  margin-top: 14px;
-
-  padding: 12px;
-
-  border-radius: 14px;
-
-  text-decoration: none;
-
-  text-align: center;
-
-  background: #F5F1EB;
-
-  color: #393128;
-
-  font-weight: 750;
+  line-height: 1.4;
 }
 
 
-/* =========================
-   幫我直接決定
-========================= */
+/* ================================
+   結果按鈕
+================================ */
 
-.pick-button {
+.change-button {
+  width: 100%;
 
+  border: 0;
+
+  background: #F4EEE5;
+
+  color: #544C42;
+
+  padding: 16px;
+
+  margin-top: 17px;
+
+  border-radius: 17px;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.map-button {
   width: 100%;
 
   border: 0;
@@ -331,132 +336,43 @@ h1 {
 
   padding: 17px;
 
-  margin-top: 16px;
+  margin-top: 10px;
 
-  border-radius: 18px;
+  border-radius: 17px;
 
   font-size: 16px;
 
-  font-weight: 800;
+  font-weight: 750;
+
+  cursor: pointer;
 }
 
 
-/* =========================
-   最終選擇
-========================= */
-
-.choice {
-
-  display: none;
-
-  background: #EAF4E6;
-
-  border-radius: 22px;
-
-  margin-top: 16px;
-
-  padding: 20px;
-
-  text-align: left;
-}
-
-.choice.show {
-
-  display: block;
-}
-
-.choice-label {
-
-  font-size: 13px;
-
-  color: #66805F;
-}
-
-.choice-name {
-
-  font-size: 23px;
-
-  font-weight: 900;
-
-  margin-top: 5px;
-}
-
-
-/* =========================
-   飲料
-========================= */
-
-.drink {
-
-  display: none;
-
-  background: #F0EAF8;
-
-  border-radius: 22px;
-
-  margin-top: 16px;
-
-  padding: 20px;
-
-  text-align: left;
-}
-
-.drink.show {
-
-  display: block;
-}
-
-.drink-label {
-
-  color: #79678C;
-
-  font-size: 13px;
-}
-
-.drink-name {
-
-  font-size: 19px;
-
-  font-weight: 850;
-
-  margin-top: 5px;
-}
-
-
-/* =========================
-   重新搜尋
-========================= */
-
-.again {
-
-  width: 100%;
-
-  border: 0;
-
-  background: transparent;
-
-  padding: 17px;
-
-  color: #756C60;
-
-  font-size: 15px;
-}
+/* ================================
+   底部
+================================ */
 
 .hint {
-
-  margin-top: 34px;
+  margin-top: 29px;
 
   text-align: center;
 
   color: #AAA094;
 
-  font-size: 12px;
+  font-size: 13px;
 
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+.cache-note {
+  margin-top: 8px;
+
+  color: #B6ADA1;
+
+  font-size: 12px;
 }
 
 </style>
-
 </head>
 
 
@@ -464,36 +380,23 @@ h1 {
 
 <div class="app">
 
-
-<!-- ======================
-     頂部
-====================== -->
-
 <header class="header">
 
   <div class="logo">
     🍜 我要吃什麼
   </div>
 
-  <button
+  <div
     class="location"
-    id="locationButton"
-    onclick="getLocation()"
+    id="locationStatus"
   >
-    📍 取得位置
-  </button>
+    📍 等待定位
+  </div>
 
 </header>
 
 
-<main>
-
-
-<!-- ======================
-     主畫面
-====================== -->
-
-<section class="hero">
+<main class="hero">
 
   <div
     class="emoji"
@@ -502,10 +405,12 @@ h1 {
     🤔
   </div>
 
+
   <h1>
     今天<br>
     要吃什麼？
   </h1>
+
 
   <div class="subtitle">
 
@@ -516,14 +421,50 @@ h1 {
   </div>
 
 
+  <!-- 預算 -->
+
+  <div class="budget-area">
+
+    <div class="budget-title">
+      💰 今天想花多少？
+    </div>
+
+    <select
+      class="budget-select"
+      id="budget"
+    >
+
+      <option value="all">
+        不限預算
+      </option>
+
+      <option value="200">
+        $ 200 元以下
+      </option>
+
+      <option value="400">
+        $$ 200～400 元
+      </option>
+
+      <option value="700">
+        $$$ 400～700 元
+      </option>
+
+      <option value="high">
+        $$$$ 700 元以上
+      </option>
+
+    </select>
+
+  </div>
+
+
   <button
     class="main-button"
     id="findButton"
     onclick="startSearch()"
   >
-
     🍽️ 幫我找吃的
-
   </button>
 
 
@@ -531,487 +472,348 @@ h1 {
     class="status"
     id="status"
   >
-
-    先允許定位，就可以開始
-
-  </div>
-
-</section>
-
-
-<!-- ======================
-     結果
-====================== -->
-
-<section
-  class="results"
-  id="results"
->
-
-  <div class="result-title">
-
-    🍴 附近可以吃
-
+    第一次搜尋需要幾秒鐘。<br>
+    搜尋成功後，換一家會快很多。
   </div>
 
 
-  <div
-    class="cards"
-    id="cards"
-  ></div>
+  <!-- 結果 -->
 
-
-  <button
-    class="pick-button"
-    onclick="decideRestaurant()"
+  <section
+    class="result-card"
+    id="resultCard"
   >
 
-    🎲 不想選，直接幫我決定
-
-  </button>
-
-
-  <div
-    class="choice"
-    id="choice"
-  ></div>
+    <div class="result-label">
+      今天就吃這家
+    </div>
 
 
-  <div
-    class="drink"
-    id="drink"
-  ></div>
+    <div
+      class="restaurant-name"
+      id="restaurantName"
+    >
+    </div>
 
 
-  <button
-    class="again"
-    onclick="startSearch()"
-  >
-
-    ↻ 這些都不想吃，換一批
-
-  </button>
-
-</section>
+    <div
+      class="restaurant-type"
+      id="restaurantType"
+    >
+    </div>
 
 
-<div class="hint">
+    <div class="info-grid">
 
-  使用免費開放地圖資料<br>
-  不需要付費 API 或 AI Token
+      <div class="info-box">
 
-</div>
+        <div class="info-title">
+          🚶 距離
+        </div>
 
+        <div
+          class="info-value"
+          id="distance"
+        >
+        </div>
+
+      </div>
+
+
+      <div class="info-box">
+
+        <div class="info-title">
+          💰 預期消費
+        </div>
+
+        <div
+          class="info-value"
+          id="price"
+        >
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="change-button"
+      onclick="chooseAnother()"
+    >
+      ↻ 不喜歡，換一家
+    </button>
+
+
+    <button
+      class="map-button"
+      onclick="openMap()"
+    >
+      🗺️ 帶我去
+    </button>
+
+  </section>
+
+
+  <div class="hint">
+
+    優先尋找約步行 5～10 分鐘內的餐廳
+
+    <div class="cache-note">
+      使用免費 OpenStreetMap 資料 · 不需要 AI Token
+    </div>
+
+  </div>
 
 </main>
 
 </div>
 
 
-
 <script>
 
-/* =====================================================
-   餐飲類型
-   每一個選項都是獨立種類
-===================================================== */
+/* ========================================
+   基本設定
+======================================== */
 
-const FOOD_TYPES = [
+const SEARCH_RADIUS = 850;
 
-  ["🍜","陽春麵",["陽春麵"]],
+const CACHE_TIME =
+  6 * 60 * 60 * 1000;
 
-  ["🍜","乾麵",["乾麵"]],
-
-  ["🍜","牛肉麵",[
-    "beef_noodle",
-    "牛肉麵"
-  ]],
-
-  ["🍚","滷肉飯",[
-    "滷肉飯",
-    "魯肉飯"
-  ]],
-
-  ["🍚","肉燥飯",[
-    "肉燥飯"
-  ]],
-
-  ["🥟","水餃",[
-    "dumpling",
-    "水餃"
-  ]],
-
-  ["🥟","鍋貼",[
-    "鍋貼"
-  ]],
-
-  ["🥟","小籠包",[
-    "小籠包"
-  ]],
-
-  ["🥟","蒸餃",[
-    "蒸餃"
-  ]],
-
-  ["🥣","麵線",[
-    "麵線"
-  ]],
-
-  ["🍜","米粉",[
-    "米粉"
-  ]],
-
-  ["🍜","米苔目",[
-    "米苔目"
-  ]],
-
-  ["🥣","粥",[
-    "porridge",
-    "粥"
-  ]],
-
-  ["🍳","炒飯",[
-    "炒飯"
-  ]],
-
-  ["🍜","炒麵",[
-    "炒麵"
-  ]],
-
-  ["🍱","便當",[
-    "bento",
-    "便當"
-  ]],
-
-  ["🍱","自助餐",[
-    "自助餐"
-  ]],
-
-  ["🍢","滷味",[
-    "滷味",
-    "魯味"
-  ]],
-
-  ["🍗","鹽酥雞",[
-    "鹽酥雞"
-  ]],
-
-  ["🍳","熱炒",[
-    "熱炒"
-  ]],
-
-  ["🥩","牛排",[
-    "steak",
-    "牛排"
-  ]],
-
-  ["🥘","鐵板燒",[
-    "teppanyaki",
-    "鐵板燒"
-  ]],
-
-  ["🍲","火鍋",[
-    "hot_pot",
-    "火鍋"
-  ]],
-
-  ["🌶️","麻辣鍋",[
-    "麻辣鍋"
-  ]],
-
-  ["🌶️","麻辣燙",[
-    "麻辣燙"
-  ]],
-
-  ["🥩","燒肉",[
-    "燒肉"
-  ]],
-
-  ["🍜","拉麵",[
-    "ramen",
-    "拉麵"
-  ]],
-
-  ["🍜","烏龍麵",[
-    "udon",
-    "烏龍麵"
-  ]],
-
-  ["🍣","壽司",[
-    "sushi",
-    "壽司"
-  ]],
-
-  ["🍚","丼飯",[
-    "丼飯"
-  ]],
-
-  ["🍛","日式咖哩",[
-    "japanese_curry",
-    "日式咖哩"
-  ]],
-
-  ["🥘","韓式料理",[
-    "korean",
-    "韓式"
-  ]],
-
-  ["🍝","義大利麵",[
-    "pasta",
-    "義大利麵"
-  ]],
-
-  ["🍕","披薩",[
-    "pizza",
-    "披薩"
-  ]],
-
-  ["🍔","漢堡",[
-    "burger",
-    "漢堡"
-  ]],
-
-  ["🥞","早午餐",[
-    "brunch",
-    "早午餐"
-  ]],
-
-  ["🍜","越南河粉",[
-    "vietnamese",
-    "越南",
-    "河粉"
-  ]],
-
-  ["🥘","泰式料理",[
-    "thai",
-    "泰式"
-  ]],
-
-  ["🥟","港式料理",[
-    "hong_kong",
-    "港式"
-  ]],
-
-  ["🍗","海南雞飯",[
-    "海南雞"
-  ]],
+const CACHE_KEY =
+  "whatToEatRestaurantCacheV2";
 
 
-  /* ======================
-     速食品牌分開
-  ====================== */
+/*
+  公開 Overpass 節點
 
-  ["🍔","麥當勞",[
-    "mcdonald",
-    "麥當勞"
-  ]],
+  如果第一個失敗，
+  自動換下一個。
+*/
 
-  ["🍗","肯德基",[
-    "kfc",
-    "肯德基"
-  ]],
+const OVERPASS_SERVERS = [
 
-  ["🍔","摩斯漢堡",[
-    "mos burger",
-    "摩斯"
-  ]],
+  "https://overpass-api.de/api/interpreter",
 
-  ["🍔","漢堡王",[
-    "burger king",
-    "漢堡王"
-  ]],
+  "https://lz4.overpass-api.de/api/interpreter",
 
-  ["🍗","頂呱呱",[
-    "tkk",
-    "頂呱呱"
-  ]],
-
-  ["🍕","拿坡里",[
-    "napoli",
-    "拿坡里"
-  ]],
-
-  ["🍕","必勝客",[
-    "pizza hut",
-    "必勝客"
-  ]],
-
-  ["🍕","達美樂",[
-    "domino",
-    "達美樂"
-  ]],
-
-
-  /* ======================
-     其他
-  ====================== */
-
-  ["🍗","雞肉飯",[
-    "雞肉飯"
-  ]],
-
-  ["🍖","排骨飯",[
-    "排骨飯"
-  ]],
-
-  ["🍗","雞腿飯",[
-    "雞腿飯"
-  ]],
-
-  ["🐷","控肉飯",[
-    "控肉飯",
-    "焢肉飯"
-  ]],
-
-  ["🍛","咖哩飯",[
-    "curry",
-    "咖哩飯"
-  ]],
-
-  ["🍲","關東煮",[
-    "oden",
-    "關東煮"
-  ]],
-
-  ["🥪","三明治",[
-    "sandwich",
-    "三明治"
-  ]],
-
-  ["🌯","墨西哥料理",[
-    "mexican"
-  ]],
-
-  ["🍛","印度料理",[
-    "indian"
-  ]],
-
-  ["🍜","泰式河粉",[
-    "pad_thai"
-  ]]
+  "https://z.overpass-api.de/api/interpreter"
 
 ];
 
 
-
-/* =====================================================
-   程式狀態
-===================================================== */
-
 let userLat = null;
-
 let userLon = null;
 
-let currentRestaurants = [];
+let restaurants = [];
 
-let selectedRestaurant = null;
+let filteredRestaurants = [];
 
-let searching = false;
+let currentRestaurant = null;
+
+let recentIds = [];
 
 
+/* ========================================
+   價格資料
+======================================== */
 
-/* =====================================================
-   取得 GPS
-===================================================== */
+const priceRules = [
+
+  {
+    keywords:
+      ["小吃","麵","noodle","dumpling",
+       "水餃","餃子","滷肉","魯肉",
+       "雞肉飯","rice"],
+    min: 60,
+    max: 180
+  },
+
+  {
+    keywords:
+      ["早餐","breakfast"],
+    min: 60,
+    max: 180
+  },
+
+  {
+    keywords:
+      ["麥當勞","mcdonald"],
+    min: 100,
+    max: 250
+  },
+
+  {
+    keywords:
+      ["肯德基","kfc"],
+    min: 120,
+    max: 300
+  },
+
+  {
+    keywords:
+      ["摩斯","mos burger"],
+    min: 120,
+    max: 300
+  },
+
+  {
+    keywords:
+      ["漢堡王","burger king"],
+    min: 120,
+    max: 300
+  },
+
+  {
+    keywords:
+      ["subway"],
+    min: 120,
+    max: 280
+  },
+
+  {
+    keywords:
+      ["牛肉麵"],
+    min: 120,
+    max: 280
+  },
+
+  {
+    keywords:
+      ["便當","自助餐"],
+    min: 100,
+    max: 220
+  },
+
+  {
+    keywords:
+      ["拉麵","ramen"],
+    min: 180,
+    max: 350
+  },
+
+  {
+    keywords:
+      ["咖哩","curry"],
+    min: 150,
+    max: 350
+  },
+
+  {
+    keywords:
+      ["義大利","pasta","italian"],
+    min: 200,
+    max: 450
+  },
+
+  {
+    keywords:
+      ["韓式","korean"],
+    min: 200,
+    max: 500
+  },
+
+  {
+    keywords:
+      ["火鍋","hotpot"],
+    min: 250,
+    max: 650
+  },
+
+  {
+    keywords:
+      ["牛排","steak"],
+    min: 300,
+    max: 1000
+  },
+
+  {
+    keywords:
+      ["燒肉","烤肉","bbq"],
+    min: 400,
+    max: 1000
+  },
+
+  {
+    keywords:
+      ["壽司","sushi","日本料理","japanese"],
+    min: 180,
+    max: 600
+  }
+
+];
+
+
+/* ========================================
+   取得定位
+======================================== */
 
 function getLocation() {
 
-  const status =
-    document.getElementById(
-      "status"
-    );
+  return new Promise(
+    (resolve, reject) => {
 
-  const button =
-    document.getElementById(
-      "locationButton"
-    );
+      if (!navigator.geolocation) {
 
+        reject(
+          new Error("這台裝置不支援定位")
+        );
 
-  if (!navigator.geolocation) {
-
-    status.textContent =
-      "這台裝置不支援定位。";
-
-    return;
-  }
-
-
-  status.textContent =
-    "正在取得你的位置…";
-
-
-  navigator.geolocation.getCurrentPosition(
-
-    function(position) {
-
-      userLat =
-        position.coords.latitude;
-
-      userLon =
-        position.coords.longitude;
-
-
-      button.textContent =
-        "✓ 已取得位置";
-
-      button.classList.add(
-        "ready"
-      );
-
-
-      status.textContent =
-        "定位完成，按「幫我找吃的」開始搜尋。";
-
-    },
-
-
-    function(error) {
-
-      console.log(
-        "定位錯誤：",
-        error
-      );
-
-
-      if (
-        error.code ===
-        error.PERMISSION_DENIED
-      ) {
-
-        status.textContent =
-          "定位權限被關閉，請允許這個網站使用位置。";
-
+        return;
       }
 
-      else {
 
-        status.textContent =
-          "目前無法取得位置，請再試一次。";
+      navigator.geolocation.getCurrentPosition(
 
-      }
+        position => {
 
-    },
+          userLat =
+            position.coords.latitude;
+
+          userLon =
+            position.coords.longitude;
 
 
-    {
+          document
+            .getElementById(
+              "locationStatus"
+            )
+            .textContent =
+              "✓ 已取得位置";
 
-      enableHighAccuracy: true,
 
-      timeout: 12000,
+          resolve();
 
-      maximumAge: 60000
+        },
+
+
+        error => {
+
+          reject(error);
+
+        },
+
+
+        {
+          enableHighAccuracy: false,
+
+          timeout: 12000,
+
+          maximumAge: 300000
+        }
+
+      );
 
     }
-
   );
 
 }
 
 
-
-/* =====================================================
-   計算直線距離
-===================================================== */
+/* ========================================
+   距離計算
+======================================== */
 
 function distanceMeters(
   lat1,
@@ -1022,225 +824,759 @@ function distanceMeters(
 
   const R = 6371000;
 
-
-  const p1 =
-    lat1 *
-    Math.PI /
-    180;
+  const rad =
+    Math.PI / 180;
 
 
-  const p2 =
-    lat2 *
-    Math.PI /
-    180;
+  const dLat =
+    (lat2 - lat1) * rad;
 
-
-  const dp =
-    (lat2 - lat1) *
-    Math.PI /
-    180;
-
-
-  const dl =
-    (lon2 - lon1) *
-    Math.PI /
-    180;
+  const dLon =
+    (lon2 - lon1) * rad;
 
 
   const a =
+    Math.sin(dLat / 2) *
+    Math.sin(dLat / 2) +
 
-    Math.sin(
-      dp / 2
-    ) ** 2
+    Math.cos(lat1 * rad) *
+    Math.cos(lat2 * rad) *
 
-    +
-
-    Math.cos(p1) *
-
-    Math.cos(p2) *
-
-    Math.sin(
-      dl / 2
-    ) ** 2;
+    Math.sin(dLon / 2) *
+    Math.sin(dLon / 2);
 
 
-  return Math.round(
-
+  const c =
     2 *
-
-    R *
-
     Math.atan2(
-
       Math.sqrt(a),
+      Math.sqrt(1 - a)
+    );
 
-      Math.sqrt(
-        1 - a
-      )
 
-    )
+  return R * c;
 
+}
+
+
+/* ========================================
+   步行時間估算
+======================================== */
+
+function walkingMinutes(meters) {
+
+  /*
+    約每分鐘 75 公尺
+  */
+
+  return Math.max(
+    1,
+    Math.round(meters / 75)
   );
 
 }
 
 
+/* ========================================
+   價格估算
+======================================== */
 
-/* =====================================================
-   Overpass 免費地圖服務
+function estimatePrice(restaurant) {
 
-   重要：
-   每一台最多等待 8 秒。
+  const text = (
 
-   沒反應就自動換下一台。
+    restaurant.name +
+    " " +
+    restaurant.cuisine
 
-   所以不會再無限卡住。
-===================================================== */
-
-async function overpassQuery(
-  query
-) {
-
-  const servers = [
-
-    "https://overpass-api.de/api/interpreter",
-
-    "https://overpass.kumi.systems/api/interpreter",
-
-    "https://overpass.nchc.org.tw/api/interpreter"
-
-  ];
+  ).toLowerCase();
 
 
   for (
-    const server
-    of servers
+    const rule of priceRules
   ) {
 
-    const controller =
-      new AbortController();
+    if (
+      rule.keywords.some(
+        keyword =>
+          text.includes(
+            keyword.toLowerCase()
+          )
+      )
+    ) {
 
-
-    const timer =
-      setTimeout(
-        function() {
-
-          controller.abort();
-
-        },
-
-        8000
-      );
-
-
-    try {
-
-      const response =
-        await fetch(
-
-          server,
-
-          {
-
-            method:
-              "POST",
-
-            headers: {
-
-              "Content-Type":
-                "application/x-www-form-urlencoded;charset=UTF-8"
-
-            },
-
-            body:
-
-              "data=" +
-
-              encodeURIComponent(
-                query
-              ),
-
-            signal:
-              controller.signal
-
-          }
-
-        );
-
-
-      clearTimeout(
-        timer
-      );
-
-
-      if (
-        !response.ok
-      ) {
-
-        console.log(
-          "伺服器錯誤：",
-          server,
-          response.status
-        );
-
-        continue;
-
-      }
-
-
-      const data =
-        await response.json();
-
-
-      if (
-        data &&
-        data.elements
-      ) {
-
-        return data;
-
-      }
-
-    }
-
-
-    catch(error) {
-
-      clearTimeout(
-        timer
-      );
-
-
-      console.log(
-
-        "Overpass 失敗：",
-
-        server,
-
-        error
-
-      );
+      return {
+        min: rule.min,
+        max: rule.max
+      };
 
     }
 
   }
 
 
-  throw new Error(
-    "附近餐廳搜尋服務目前沒有回應"
+  /*
+    找不到類型時，
+    使用一般餐廳預估。
+  */
+
+  return {
+    min: 120,
+    max: 400
+  };
+
+}
+
+
+/* ========================================
+   餐廳分類
+======================================== */
+
+function readableCuisine(
+  cuisine,
+  name
+) {
+
+  const text =
+    (
+      cuisine +
+      " " +
+      name
+    ).toLowerCase();
+
+
+  if (
+    text.includes("mcdonald")
+    ||
+    text.includes("麥當勞")
+  )
+    return "麥當勞";
+
+
+  if (
+    text.includes("kfc")
+    ||
+    text.includes("肯德基")
+  )
+    return "肯德基";
+
+
+  if (
+    text.includes("mos burger")
+    ||
+    text.includes("摩斯")
+  )
+    return "摩斯漢堡";
+
+
+  if (
+    text.includes("burger king")
+    ||
+    text.includes("漢堡王")
+  )
+    return "漢堡王";
+
+
+  if (
+    text.includes("subway")
+  )
+    return "SUBWAY";
+
+
+  if (
+    text.includes("ramen")
+    ||
+    text.includes("拉麵")
+  )
+    return "拉麵";
+
+
+  if (
+    text.includes("sushi")
+    ||
+    text.includes("壽司")
+  )
+    return "壽司";
+
+
+  if (
+    text.includes("hot_pot")
+    ||
+    text.includes("hotpot")
+    ||
+    text.includes("火鍋")
+  )
+    return "火鍋";
+
+
+  if (
+    text.includes("steak")
+    ||
+    text.includes("牛排")
+  )
+    return "牛排";
+
+
+  if (
+    text.includes("bbq")
+    ||
+    text.includes("燒肉")
+  )
+    return "燒肉";
+
+
+  if (
+    text.includes("italian")
+    ||
+    text.includes("pasta")
+    ||
+    text.includes("義大利")
+  )
+    return "義大利料理";
+
+
+  if (
+    text.includes("korean")
+    ||
+    text.includes("韓式")
+  )
+    return "韓式料理";
+
+
+  if (
+    text.includes("japanese")
+    ||
+    text.includes("日式")
+  )
+    return "日式料理";
+
+
+  if (
+    text.includes("chinese")
+  )
+    return "中式料理";
+
+
+  if (
+    text.includes("burger")
+  )
+    return "漢堡";
+
+
+  if (
+    text.includes("noodle")
+    ||
+    text.includes("麵")
+  )
+    return "麵食";
+
+
+  if (
+    text.includes("breakfast")
+    ||
+    text.includes("早餐")
+  )
+    return "早餐";
+
+
+  if (
+    cuisine
+  ) {
+
+    return cuisine
+      .replaceAll("_"," ")
+      .replaceAll(";"," · ");
+
+  }
+
+
+  return "餐廳";
+
+}
+
+
+/* ========================================
+   Overpass 查詢
+======================================== */
+
+function createQuery() {
+
+  return `
+
+[out:json][timeout:18];
+
+(
+
+node
+  ["amenity"="restaurant"]
+  (around:${SEARCH_RADIUS},${userLat},${userLon});
+
+way
+  ["amenity"="restaurant"]
+  (around:${SEARCH_RADIUS},${userLat},${userLon});
+
+node
+  ["amenity"="fast_food"]
+  (around:${SEARCH_RADIUS},${userLat},${userLon});
+
+way
+  ["amenity"="fast_food"]
+  (around:${SEARCH_RADIUS},${userLat},${userLon});
+
+node
+  ["amenity"="food_court"]
+  (around:${SEARCH_RADIUS},${userLat},${userLon});
+
+way
+  ["amenity"="food_court"]
+  (around:${SEARCH_RADIUS},${userLat},${userLon});
+
+);
+
+out center tags;
+
+`;
+
+}
+
+
+/* ========================================
+   單一伺服器請求
+======================================== */
+
+async function fetchServer(
+  server
+) {
+
+  const controller =
+    new AbortController();
+
+
+  const timer =
+    setTimeout(
+      () =>
+        controller.abort(),
+      10000
+    );
+
+
+  try {
+
+    const response =
+      await fetch(
+        server,
+        {
+
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/x-www-form-urlencoded"
+          },
+
+          body:
+            "data=" +
+            encodeURIComponent(
+              createQuery()
+            ),
+
+          signal:
+            controller.signal
+
+        }
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "伺服器暫時忙碌"
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    return data;
+
+
+  }
+
+  finally {
+
+    clearTimeout(timer);
+
+  }
+
+}
+
+
+/* ========================================
+   多伺服器備援
+======================================== */
+
+async function fetchRestaurants() {
+
+  let lastError = null;
+
+
+  for (
+    let i = 0;
+    i < OVERPASS_SERVERS.length;
+    i++
+  ) {
+
+    const server =
+      OVERPASS_SERVERS[i];
+
+
+    setStatus(
+      `正在搜尋附近餐廳…<br>
+       資料來源 ${i + 1}/${OVERPASS_SERVERS.length}`
+    );
+
+
+    try {
+
+      const data =
+        await fetchServer(server);
+
+
+      if (
+        data &&
+        Array.isArray(data.elements)
+      ) {
+
+        const parsed =
+          parseRestaurants(
+            data.elements
+          );
+
+
+        if (
+          parsed.length > 0
+        ) {
+
+          return parsed;
+
+        }
+
+      }
+
+    }
+
+    catch(error) {
+
+      lastError = error;
+
+    }
+
+  }
+
+
+  throw (
+    lastError ||
+    new Error(
+      "目前無法取得餐廳資料"
+    )
   );
 
 }
 
 
+/* ========================================
+   解析 OSM
+======================================== */
 
-/* =====================================================
-   開始找附近餐廳
-===================================================== */
+function parseRestaurants(
+  elements
+) {
 
-async function startSearch() {
+  const result = [];
 
-  if (searching) {
+  const seen =
+    new Set();
+
+
+  for (
+    const item of elements
+  ) {
+
+    const tags =
+      item.tags || {};
+
+
+    /*
+      沒名字的店先不顯示
+    */
+
+    const name =
+      tags.name ||
+      tags["name:zh"] ||
+      tags["name:zh-Hant"];
+
+
+    if (!name)
+      continue;
+
+
+    const lat =
+      item.lat ??
+      item.center?.lat;
+
+
+    const lon =
+      item.lon ??
+      item.center?.lon;
+
+
+    if (
+      typeof lat !== "number"
+      ||
+      typeof lon !== "number"
+    )
+      continue;
+
+
+    const id =
+      item.type +
+      "-" +
+      item.id;
+
+
+    if (
+      seen.has(id)
+    )
+      continue;
+
+
+    seen.add(id);
+
+
+    const meters =
+      distanceMeters(
+        userLat,
+        userLon,
+        lat,
+        lon
+      );
+
+
+    const restaurant = {
+
+      id,
+
+      name,
+
+      lat,
+
+      lon,
+
+      distance:
+        Math.round(meters),
+
+      cuisine:
+        tags.cuisine || "",
+
+      amenity:
+        tags.amenity || "",
+
+      brand:
+        tags.brand || "",
+
+      openingHours:
+        tags.opening_hours || ""
+
+    };
+
+
+    restaurant.type =
+      readableCuisine(
+        restaurant.cuisine,
+        restaurant.name +
+        " " +
+        restaurant.brand
+      );
+
+
+    restaurant.price =
+      estimatePrice(
+        restaurant
+      );
+
+
+    result.push(
+      restaurant
+    );
+
+  }
+
+
+  /*
+    近的店排前面
+  */
+
+  result.sort(
+    (a,b) =>
+      a.distance -
+      b.distance
+  );
+
+
+  return result;
+
+}
+
+
+/* ========================================
+   快取
+======================================== */
+
+function saveCache(
+  data
+) {
+
+  try {
+
+    const cache = {
+
+      time:
+        Date.now(),
+
+      lat:
+        userLat,
+
+      lon:
+        userLon,
+
+      restaurants:
+        data
+
+    };
+
+
+    localStorage.setItem(
+      CACHE_KEY,
+      JSON.stringify(cache)
+    );
+
+  }
+
+  catch(error) {
+
+    /*
+      快取失敗不影響使用
+    */
+
+  }
+
+}
+
+
+/* ========================================
+   讀取快取
+======================================== */
+
+function loadCache() {
+
+  try {
+
+    const raw =
+      localStorage.getItem(
+        CACHE_KEY
+      );
+
+
+    if (!raw)
+      return null;
+
+
+    const cache =
+      JSON.parse(raw);
+
+
+    /*
+      超過六小時就重新抓
+    */
+
+    if (
+      Date.now() -
+      cache.time >
+      CACHE_TIME
+    ) {
+
+      return null;
+
+    }
+
+
+    /*
+      使用者如果已移動太遠，
+      不使用舊資料
+    */
+
+    const moved =
+      distanceMeters(
+        userLat,
+        userLon,
+        cache.lat,
+        cache.lon
+      );
+
+
+    if (
+      moved > 1000
+    ) {
+
+      return null;
+
+    }
+
+
+    if (
+      !Array.isArray(
+        cache.restaurants
+      )
+    )
+      return null;
+
+
+    return cache.restaurants;
+
+  }
+
+  catch(error) {
+
+    return null;
+
+  }
+
+}
+
+
+/* ========================================
+   預算篩選
+======================================== */
+
+function applyBudget() {
+
+  const budget =
+    document
+      .getElementById(
+        "budget"
+      )
+      .value;
+
+
+  if (
+    budget === "all"
+  ) {
+
+    filteredRestaurants =
+      [...restaurants];
 
     return;
 
@@ -1248,27 +1584,359 @@ async function startSearch() {
 
 
   if (
-    userLat === null ||
-    userLon === null
+    budget === "200"
   ) {
 
-    getLocation();
+    filteredRestaurants =
+      restaurants.filter(
+        restaurant =>
+          restaurant.price.min <= 200
+      );
+
+  }
 
 
-    document.getElementById(
-      "status"
-    ).textContent =
+  else if (
+    budget === "400"
+  ) {
 
-      "正在取得位置，完成後再按一次「幫我找吃的」。";
+    filteredRestaurants =
+      restaurants.filter(
+        restaurant =>
+          restaurant.price.max >= 200
+          &&
+          restaurant.price.min <= 400
+      );
 
+  }
+
+
+  else if (
+    budget === "700"
+  ) {
+
+    filteredRestaurants =
+      restaurants.filter(
+        restaurant =>
+          restaurant.price.max >= 400
+          &&
+          restaurant.price.min <= 700
+      );
+
+  }
+
+
+  else if (
+    budget === "high"
+  ) {
+
+    filteredRestaurants =
+      restaurants.filter(
+        restaurant =>
+          restaurant.price.max >= 700
+      );
+
+  }
+
+
+  /*
+    如果預算條件完全沒有結果，
+    不讓 App 壞掉。
+  */
+
+  if (
+    filteredRestaurants.length === 0
+  ) {
+
+    filteredRestaurants =
+      [...restaurants];
+
+    setStatus(
+      "附近沒有足夠符合這個預算的資料，先從附近餐廳幫你挑。"
+    );
+
+  }
+
+}
+
+
+/* ========================================
+   優先 5～10 分鐘
+======================================== */
+
+function preferredRestaurants() {
+
+  /*
+    約 300～800 公尺
+  */
+
+  let preferred =
+    filteredRestaurants.filter(
+      restaurant =>
+        restaurant.distance >= 250
+        &&
+        restaurant.distance <= 800
+    );
+
+
+  /*
+    如果 5～10 分鐘內太少，
+    就使用全部附近店家。
+  */
+
+  if (
+    preferred.length < 3
+  ) {
+
+    preferred =
+      [...filteredRestaurants];
+
+  }
+
+
+  return preferred;
+
+}
+
+
+/* ========================================
+   抽一家
+======================================== */
+
+function pickRestaurant() {
+
+  const pool =
+    preferredRestaurants();
+
+
+  if (
+    pool.length === 0
+  ) {
+
+    setStatus(
+      "附近暫時找不到可以推薦的餐廳。"
+    );
 
     return;
 
   }
 
 
-  searching = true;
+  /*
+    先排除最近抽過的店
+  */
 
+  let available =
+    pool.filter(
+      restaurant =>
+        !recentIds.includes(
+          restaurant.id
+        )
+    );
+
+
+  /*
+    全部抽過就重新開始
+  */
+
+  if (
+    available.length === 0
+  ) {
+
+    recentIds = [];
+
+    available =
+      [...pool];
+
+  }
+
+
+  const index =
+    Math.floor(
+      Math.random() *
+      available.length
+    );
+
+
+  currentRestaurant =
+    available[index];
+
+
+  recentIds.push(
+    currentRestaurant.id
+  );
+
+
+  /*
+    最多記住最近 8 家
+  */
+
+  if (
+    recentIds.length > 8
+  ) {
+
+    recentIds.shift();
+
+  }
+
+
+  showRestaurant(
+    currentRestaurant
+  );
+
+}
+
+
+/* ========================================
+   顯示結果
+======================================== */
+
+function showRestaurant(
+  restaurant
+) {
+
+  document
+    .getElementById(
+      "emoji"
+    )
+    .textContent =
+      foodEmoji(
+        restaurant.type
+      );
+
+
+  document
+    .getElementById(
+      "restaurantName"
+    )
+    .textContent =
+      restaurant.name;
+
+
+  document
+    .getElementById(
+      "restaurantType"
+    )
+    .textContent =
+      restaurant.type;
+
+
+  const minutes =
+    walkingMinutes(
+      restaurant.distance
+    );
+
+
+  document
+    .getElementById(
+      "distance"
+    )
+    .innerHTML =
+      `約 ${minutes} 分鐘<br>
+       ${restaurant.distance} 公尺`;
+
+
+  document
+    .getElementById(
+      "price"
+    )
+    .innerHTML =
+      `約 NT$${restaurant.price.min}
+       ～${restaurant.price.max}<br>
+       / 人`;
+
+
+  document
+    .getElementById(
+      "resultCard"
+    )
+    .classList.add(
+      "show"
+    );
+
+
+  setStatus(
+    `附近找到 ${restaurants.length} 家，
+     幫你挑了這家 👇`
+  );
+
+}
+
+
+/* ========================================
+   Emoji
+======================================== */
+
+function foodEmoji(type) {
+
+  if (
+    type.includes("麵")
+  )
+    return "🍜";
+
+
+  if (
+    type.includes("壽司")
+    ||
+    type.includes("日式")
+  )
+    return "🍣";
+
+
+  if (
+    type.includes("火鍋")
+  )
+    return "🍲";
+
+
+  if (
+    type.includes("牛排")
+  )
+    return "🥩";
+
+
+  if (
+    type.includes("燒肉")
+  )
+    return "🥓";
+
+
+  if (
+    type.includes("漢堡")
+    ||
+    type.includes("麥當勞")
+    ||
+    type.includes("肯德基")
+    ||
+    type.includes("摩斯")
+    ||
+    type.includes("SUBWAY")
+  )
+    return "🍔";
+
+
+  if (
+    type.includes("義大利")
+  )
+    return "🍝";
+
+
+  if (
+    type.includes("韓式")
+  )
+    return "🥘";
+
+
+  return "🍽️";
+
+}
+
+
+/* ========================================
+   主搜尋
+======================================== */
+
+async function startSearch() {
 
   const button =
     document.getElementById(
@@ -1276,336 +1944,122 @@ async function startSearch() {
     );
 
 
-  const status =
-    document.getElementById(
-      "status"
+  button.disabled = true;
+
+  button.textContent =
+    "正在找附近好吃的…";
+
+
+  document
+    .getElementById(
+      "resultCard"
+    )
+    .classList.remove(
+      "show"
     );
 
 
-  button.disabled = true;
-
-
-  button.textContent =
-    "⏳ 正在找附近好吃的…";
-
-
-  status.textContent =
-    "正在搜尋附近餐廳，最多可能需要約 20 秒";
-
-
-  document.getElementById(
-    "results"
-  ).classList.remove(
-    "show"
-  );
-
-
-  document.getElementById(
-    "choice"
-  ).classList.remove(
-    "show"
-  );
-
-
-  document.getElementById(
-    "drink"
-  ).classList.remove(
-    "show"
+  setStatus(
+    "📍 正在確認你的位置…"
   );
 
 
   try {
 
+    /*
+      1. 定位
+    */
 
-    const query = `
+    await getLocation();
 
-      [out:json][timeout:12];
 
-      (
+    /*
+      2. 看手機裡有沒有近期資料
+    */
 
-        node["amenity"="restaurant"]
-        (around:1000,${userLat},${userLon});
-
-        way["amenity"="restaurant"]
-        (around:1000,${userLat},${userLon});
-
-        node["amenity"="fast_food"]
-        (around:1000,${userLat},${userLon});
-
-        way["amenity"="fast_food"]
-        (around:1000,${userLat},${userLon});
-
-        node["amenity"="food_court"]
-        (around:1000,${userLat},${userLon});
-
-      );
-
-      out center tags;
-
-    `;
-
-
-    const data =
-      await overpassQuery(
-        query
-      );
-
-
-    const found = [];
-
-    const names =
-      new Set();
-
-
-    for (
-      const place
-      of data.elements || []
-    ) {
-
-
-      const tags =
-        place.tags || {};
-
-
-      const name =
-
-        tags["name:zh-Hant"]
-
-        ||
-
-        tags["name:zh"]
-
-        ||
-
-        tags.name;
-
-
-      if (!name) {
-
-        continue;
-
-      }
-
-
-      const lat =
-
-        place.lat
-
-        ??
-
-        place.center?.lat;
-
-
-      const lon =
-
-        place.lon
-
-        ??
-
-        place.center?.lon;
-
-
-      if (
-        lat == null ||
-        lon == null
-      ) {
-
-        continue;
-
-      }
-
-
-      const distance =
-        distanceMeters(
-
-          userLat,
-
-          userLon,
-
-          lat,
-
-          lon
-
-        );
-
-
-      /*
-         約 5～10 分鐘步行區域。
-
-         目前先用直線距離估算。
-
-         250～850 公尺。
-      */
-
-      if (
-        distance < 250 ||
-        distance > 850
-      ) {
-
-        continue;
-
-      }
-
-
-      const uniqueName =
-        name
-          .trim()
-          .toLowerCase();
-
-
-      if (
-        names.has(
-          uniqueName
-        )
-      ) {
-
-        continue;
-
-      }
-
-
-      names.add(
-        uniqueName
-      );
-
-
-      found.push({
-
-        name: name,
-
-        lat: lat,
-
-        lon: lon,
-
-        distance: distance,
-
-        cuisine:
-          tags.cuisine || "",
-
-        brand:
-          tags.brand || "",
-
-        opening:
-          tags.opening_hours || ""
-
-      });
-
-    }
+    const cached =
+      loadCache();
 
 
     if (
-      found.length === 0
+      cached &&
+      cached.length > 0
     ) {
 
-      throw new Error(
-        "附近沒有找到足夠的餐廳資料"
+      restaurants =
+        cached;
+
+
+      applyBudget();
+
+      pickRestaurant();
+
+
+      setStatus(
+        `⚡ 使用附近已儲存的 ${restaurants.length} 家餐廳資料`
       );
+
+
+      return;
 
     }
 
 
     /*
-       每次重新洗牌
+      3. 沒快取才連線搜尋
     */
 
-    found.sort(
-      function() {
+    restaurants =
+      await fetchRestaurants();
 
-        return (
-          Math.random() -
-          0.5
-        );
 
-      }
+    /*
+      4. 存手機
+    */
+
+    saveCache(
+      restaurants
     );
 
 
     /*
-       最多顯示 5 家
+      5. 預算
     */
 
-    currentRestaurants =
-      found.slice(
-        0,
-        5
-      );
-
-
-    renderRestaurants();
-
-
-    status.textContent =
-
-      "找到 " +
-
-      found.length +
-
-      " 間附近餐廳，先挑了 " +
-
-      currentRestaurants.length +
-
-      " 間給你。";
-
-
-    document.getElementById(
-      "results"
-    ).classList.add(
-      "show"
-    );
+    applyBudget();
 
 
     /*
-       搜尋完成後
-       自動往結果滑
+      6. 抽一家
     */
 
-    setTimeout(
-      function() {
-
-        document.getElementById(
-          "results"
-        ).scrollIntoView({
-
-          behavior:
-            "smooth",
-
-          block:
-            "start"
-
-        });
-
-      },
-
-      200
-    );
+    pickRestaurant();
 
   }
-
 
   catch(error) {
 
+    console.error(error);
 
-    console.log(
-      error
+
+    document
+      .getElementById(
+        "emoji"
+      )
+      .textContent =
+        "😵‍💫";
+
+
+    setStatus(
+      "⚠️ 這次沒有成功取得附近餐廳。<br>" +
+      "不用重新整理頁面，等幾秒再按一次就可以。"
     );
-
-
-    status.textContent =
-
-      "⚠️ 這次沒有成功取得附近餐廳。請按一次再試試看。";
 
   }
 
-
   finally {
 
-
-    searching = false;
-
-
-    button.disabled =
-      false;
-
+    button.disabled = false;
 
     button.textContent =
       "🍽️ 幫我找吃的";
@@ -1615,785 +2069,114 @@ async function startSearch() {
 }
 
 
+/* ========================================
+   換一家
 
-/* =====================================================
-   判斷餐廳料理類型
-===================================================== */
+   注意：
+   不會重新連 API
+======================================== */
 
-function detectFoodType(
-  restaurant
-) {
-
-
-  const text = (
-
-    restaurant.name +
-
-    " " +
-
-    restaurant.cuisine +
-
-    " " +
-
-    restaurant.brand
-
-  ).toLowerCase();
-
-
-  for (
-    const type
-    of FOOD_TYPES
-  ) {
-
-
-    const emoji =
-      type[0];
-
-
-    const title =
-      type[1];
-
-
-    const keywords =
-      type[2];
-
-
-    for (
-      const keyword
-      of keywords
-    ) {
-
-
-      if (
-
-        text.includes(
-
-          keyword.toLowerCase()
-
-        )
-
-      ) {
-
-
-        return {
-
-          emoji:
-            emoji,
-
-          title:
-            title
-
-        };
-
-      }
-
-    }
-
-  }
-
-
-  return {
-
-    emoji:
-      "🍴",
-
-    title:
-      "餐廳"
-
-  };
-
-}
-
-
-
-/* =====================================================
-   顯示餐廳
-===================================================== */
-
-function renderRestaurants() {
-
-
-  const cards =
-    document.getElementById(
-      "cards"
-    );
-
-
-  cards.innerHTML =
-    "";
-
-
-  currentRestaurants.forEach(
-
-    function(
-      restaurant
-    ) {
-
-
-      const type =
-        detectFoodType(
-          restaurant
-        );
-
-
-      /*
-         約 75 公尺 / 分鐘
-         作為簡單估算
-      */
-
-      const walking =
-
-        Math.max(
-
-          4,
-
-          Math.round(
-
-            restaurant.distance /
-
-            75
-
-          )
-
-        );
-
-
-      const card =
-        document.createElement(
-          "article"
-        );
-
-
-      card.className =
-        "card";
-
-
-      card.innerHTML = `
-
-        <div class="card-top">
-
-          <div>
-
-            <div class="restaurant">
-
-              ${escapeHTML(
-                restaurant.name
-              )}
-
-            </div>
-
-
-            <div class="meta">
-
-              🚶 約 ${walking} 分鐘
-
-              ·
-
-              ${restaurant.distance} 公尺
-
-            </div>
-
-          </div>
-
-
-          <div class="tag">
-
-            ${type.emoji}
-
-            ${type.title}
-
-          </div>
-
-        </div>
-
-
-        <a
-
-          class="navigate"
-
-          href="${appleMapsURL(
-            restaurant
-          )}"
-
-          target="_blank"
-
-          rel="noopener"
-
-        >
-
-          🧭 看地圖
-
-        </a>
-
-      `;
-
-
-      cards.appendChild(
-        card
-      );
-
-    }
-
-  );
-
-}
-
-
-
-/* =====================================================
-   不想選 → 直接幫我決定
-===================================================== */
-
-function decideRestaurant() {
-
+function chooseAnother() {
 
   if (
-    !currentRestaurants.length
+    restaurants.length === 0
   ) {
+
+    startSearch();
 
     return;
 
   }
 
 
-  selectedRestaurant =
+  applyBudget();
 
-    currentRestaurants[
-
-      Math.floor(
-
-        Math.random() *
-
-        currentRestaurants.length
-
-      )
-
-    ];
-
-
-  const type =
-    detectFoodType(
-      selectedRestaurant
-    );
-
-
-  document.getElementById(
-    "emoji"
-  ).textContent =
-    type.emoji;
-
-
-  const walking =
-
-    Math.max(
-
-      4,
-
-      Math.round(
-
-        selectedRestaurant.distance /
-
-        75
-
-      )
-
-    );
-
-
-  const choice =
-    document.getElementById(
-      "choice"
-    );
-
-
-  choice.innerHTML = `
-
-    <div class="choice-label">
-
-      🎯 不要再選了，今天就吃
-
-    </div>
-
-
-    <div class="choice-name">
-
-      ${escapeHTML(
-        selectedRestaurant.name
-      )}
-
-    </div>
-
-
-    <div class="meta">
-
-      ${type.emoji}
-
-      ${type.title}
-
-      ·
-
-      🚶 約 ${walking} 分鐘
-
-    </div>
-
-
-    <a
-
-      class="navigate"
-
-      href="${appleMapsURL(
-        selectedRestaurant
-      )}"
-
-      target="_blank"
-
-      rel="noopener"
-
-    >
-
-      🧭 帶我去吃
-
-    </a>
-
-  `;
-
-
-  choice.classList.add(
-    "show"
-  );
-
-
-  /*
-     找這間餐廳附近的飲料
-  */
-
-  findDrink(
-
-    selectedRestaurant.lat,
-
-    selectedRestaurant.lon
-
-  );
-
-
-
-  setTimeout(
-
-    function() {
-
-      choice.scrollIntoView({
-
-        behavior:
-          "smooth",
-
-        block:
-          "center"
-
-      });
-
-    },
-
-    150
-
-  );
+  pickRestaurant();
 
 }
 
 
+/* ========================================
+   Google Maps 導航
+======================================== */
 
-/* =====================================================
-   找餐廳附近飲料店
-===================================================== */
+function openMap() {
 
-async function findDrink(
-  lat,
-  lon
-) {
+  if (
+    !currentRestaurant
+  )
+    return;
 
 
-  const drink =
-    document.getElementById(
-      "drink"
-    );
-
-
-  drink.classList.add(
-    "show"
-  );
-
-
-  drink.innerHTML =
-
-    "🧋 正在找餐廳附近的飲料…";
-
-
-  try {
-
-
-    const query = `
-
-      [out:json][timeout:10];
-
-      (
-
-        node["shop"="beverages"]
-        (around:500,${lat},${lon});
-
-        way["shop"="beverages"]
-        (around:500,${lat},${lon});
-
-        node["amenity"="cafe"]
-        (around:500,${lat},${lon});
-
-        node["cuisine"="bubble_tea"]
-        (around:500,${lat},${lon});
-
-      );
-
-      out center tags;
-
-    `;
-
-
-    const data =
-      await overpassQuery(
-        query
-      );
-
-
-    const drinks =
-      [];
-
-
-    const usedNames =
-      new Set();
-
-
-    for (
-      const place
-      of data.elements || []
-    ) {
-
-
-      const tags =
-        place.tags || {};
-
-
-      const name =
-
-        tags["name:zh-Hant"]
-
-        ||
-
-        tags["name:zh"]
-
-        ||
-
-        tags.name;
-
-
-      if (!name) {
-
-        continue;
-
-      }
-
-
-      const dLat =
-
-        place.lat
-
-        ??
-
-        place.center?.lat;
-
-
-      const dLon =
-
-        place.lon
-
-        ??
-
-        place.center?.lon;
-
-
-      if (
-        dLat == null ||
-        dLon == null
-      ) {
-
-        continue;
-
-      }
-
-
-      const key =
-        name
-          .trim()
-          .toLowerCase();
-
-
-      if (
-        usedNames.has(
-          key
-        )
-      ) {
-
-        continue;
-
-      }
-
-
-      usedNames.add(
-        key
-      );
-
-
-      drinks.push({
-
-        name:
-          name,
-
-        lat:
-          dLat,
-
-        lon:
-          dLon,
-
-        distance:
-
-          distanceMeters(
-
-            lat,
-
-            lon,
-
-            dLat,
-
-            dLon
-
-          )
-
-      });
-
-    }
-
-
-    drinks.sort(
-
-      function(a,b) {
-
-        return (
-          a.distance -
-          b.distance
-        );
-
-      }
-
-    );
-
-
-    if (
-      drinks.length === 0
-    ) {
-
-      throw new Error(
-        "沒有飲料資料"
-      );
-
-    }
-
-
-    const pick =
-      drinks[0];
-
-
-    drink.innerHTML = `
-
-      <div class="drink-label">
-
-        🧋 吃完順便喝這間
-
-      </div>
-
-
-      <div class="drink-name">
-
-        ${escapeHTML(
-          pick.name
-        )}
-
-      </div>
-
-
-      <div class="meta">
-
-        從餐廳約
-
-        ${pick.distance}
-
-        公尺
-
-      </div>
-
-
-      <a
-
-        class="navigate"
-
-        href="${appleMapsURL(
-          pick
-        )}"
-
-        target="_blank"
-
-        rel="noopener"
-
-      >
-
-        🧭 飲料店導航
-
-      </a>
-
-    `;
-
-  }
-
-
-  catch(error) {
-
-
-    console.log(
-      "飲料搜尋失敗",
-      error
-    );
-
-
-    drink.innerHTML = `
-
-      <div class="drink-label">
-
-        🧋 餐後飲料
-
-      </div>
-
-
-      <div class="meta">
-
-        這附近目前沒有找到足夠的
-        免費地圖飲料店資料。
-
-      </div>
-
-    `;
-
-  }
-
-}
-
-
-
-/* =====================================================
-   Apple Maps 步行導航
-===================================================== */
-
-function appleMapsURL(
-  place
-) {
-
-
-  return (
-
-    "https://maps.apple.com/?" +
-
-    "daddr=" +
-
-    place.lat +
-
-    "," +
-
-    place.lon +
-
-    "&q=" +
-
+  const destination =
     encodeURIComponent(
-      place.name
-    ) +
-
-    "&dirflg=w"
-
-  );
-
-}
-
-
-
-/* =====================================================
-   防止店家名稱破壞 HTML
-===================================================== */
-
-function escapeHTML(
-  text
-) {
-
-
-  return String(
-    text
-  )
-
-  .replaceAll(
-    "&",
-    "&amp;"
-  )
-
-  .replaceAll(
-    "<",
-    "&lt;"
-  )
-
-  .replaceAll(
-    ">",
-    "&gt;"
-  )
-
-  .replaceAll(
-    '"',
-    "&quot;"
-  )
-
-  .replaceAll(
-    "'",
-    "&#039;"
-  );
-
-}
-
-
-/* =====================================================
-   網頁載入完成
-===================================================== */
-
-window.addEventListener(
-
-  "load",
-
-  function() {
-
-    /*
-       不自動跳出 GPS 權限，
-       讓使用者自己按取得位置。
-    */
-
-    console.log(
-      "我要吃什麼 V1.1 已載入"
+      currentRestaurant.lat +
+      "," +
+      currentRestaurant.lon
     );
 
-  }
 
-);
+  const url =
+    "https://www.google.com/maps/dir/?api=1" +
+    "&destination=" +
+    destination +
+    "&travelmode=walking";
+
+
+  window.open(
+    url,
+    "_blank"
+  );
+
+}
+
+
+/* ========================================
+   狀態文字
+======================================== */
+
+function setStatus(text) {
+
+  document
+    .getElementById(
+      "status"
+    )
+    .innerHTML =
+      text;
+
+}
+
+
+/* ========================================
+   預算改變
+
+   已有資料就立即重抽
+======================================== */
+
+document
+  .getElementById(
+    "budget"
+  )
+  .addEventListener(
+    "change",
+    () => {
+
+      if (
+        restaurants.length > 0
+      ) {
+
+        recentIds = [];
+
+        applyBudget();
+
+        pickRestaurant();
+
+      }
+
+    }
+  );
 
 </script>
 
 </body>
-
 </html>
