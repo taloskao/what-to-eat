@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFF8EE">
+
+<title>我要吃什麼</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC",
+               "Noto Sans TC", sans-serif;
+  background: #FFF8EE;
+  color: #29251F;
+}
+
+.app {
+  max-width: 480px;
+  min-height: 100vh;
+  margin: auto;
+  padding:
+    max(24px, env(safe-area-inset-top))
+    22px
+    max(30px, env(safe-area-inset-bottom));
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 42px;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.location {
+  background: white;
+  padding: 10px 14px;
+  border-radius: 100px;
+  font-size: 14px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.hero {
+  text-align: center;
+}
+
+.emoji {
+  font-size: 72px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  margin-top: 14px;
+  color: #81786C;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.card {
+  background: white;
+  border-radius: 28px;
+  margin-top: 34px;
+  padding: 26px 22px;
+  box-shadow: 0 12px 35px rgba(77,56,27,.08);
+}
+
+.question {
+  font-size: 14px;
+  color: #92897D;
+  margin-bottom: 10px;
+}
+
+.food {
+  font-size: 27px;
+  font-weight: 800;
+  margin-bottom: 7px;
+}
+
+.info {
+  color: #81786C;
+  font-size: 15px;
+}
+
+.main-button {
+  width: 100%;
+  border: 0;
+  background: #FFB938;
+  color: #2A241B;
+  padding: 19px;
+  margin-top: 22px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.secondary-button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #756C60;
+  padding: 17px;
+  margin-top: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.hint {
+  margin-top: 34px;
+  text-align: center;
+  color: #AAA094;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <header class="header">
+    <div class="logo">🍜 我要吃什麼</div>
+    <div class="location">📍 取得位置</div>
+  </header>
+
+  <main class="hero">
+
+    <div class="emoji" id="emoji">🤔</div>
+
+    <h1>今天<br>要吃什麼？</h1>
+
+    <div class="subtitle">
+      不要再想半天了。<br>
+      讓我幫你決定。
+    </div>
+
+    <section class="card">
+
+      <div class="question">今天就吃這個</div>
+
+      <div class="food" id="food">
+        按下面讓我決定
+      </div>
+
+      <div class="info" id="info">
+        之後會從你附近的餐廳挑選
+      </div>
+
+      <button class="main-button" onclick="chooseFood()">
+        🎲 幫我選一家
+      </button>
+
+      <button class="secondary-button" onclick="chooseFood()">
+        ↻ 不喜歡，換一家
+      </button>
+
+    </section>
+
+    <div class="hint">
+      未來會自動尋找步行約 5–10 分鐘的餐廳
+    </div>
+
+  </main>
+
+</div>
+
+<script>
+const foods = [
+  ["🍜", "牛肉麵"],
+  ["🍛", "咖哩飯"],
+  ["🍱", "便當"],
+  ["🍣", "壽司"],
+  ["🍲", "火鍋"],
+  ["🍝", "義大利麵"],
+  ["🥟", "水餃"],
+  ["🍔", "漢堡"],
+  ["🍗", "雞肉飯"],
+  ["🥘", "韓式料理"]
+];
+
+function chooseFood() {
+
+  const pick =
+    foods[Math.floor(Math.random() * foods.length)];
+
+  document.getElementById("emoji").textContent =
+    pick[0];
+
+  document.getElementById("food").textContent =
+    pick[1];
+
+  document.getElementById("info").textContent =
+    "先吃這個吧！";
+
+}
+</script>
+
+</body>
+</html>
