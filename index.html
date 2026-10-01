@@ -4,13 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FFF8EE">
-
 <title>我要吃什麼</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -20,82 +17,67 @@ body {
   color: #29251F;
 }
 
+button, a { font: inherit; }
+
 .app {
   max-width: 480px;
   min-height: 100vh;
   margin: auto;
   padding:
     max(24px, env(safe-area-inset-top))
-    22px
-    max(30px, env(safe-area-inset-bottom));
+    20px
+    max(35px, env(safe-area-inset-bottom));
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 42px;
+  gap: 12px;
 }
 
 .logo {
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 850;
 }
 
 .location {
+  border: 0;
   background: white;
-  padding: 10px 14px;
+  padding: 10px 13px;
   border-radius: 100px;
-  font-size: 14px;
+  font-size: 13px;
+  color: #51493F;
   box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.location.ready {
+  background: #EAF4E6;
+  color: #3E6736;
 }
 
 .hero {
   text-align: center;
+  padding-top: 42px;
 }
 
 .emoji {
-  font-size: 72px;
-  margin-bottom: 16px;
+  font-size: 68px;
+  margin-bottom: 14px;
 }
 
 h1 {
   font-size: 38px;
-  line-height: 1.15;
+  line-height: 1.12;
   margin: 0;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
 }
 
 .subtitle {
   margin-top: 14px;
   color: #81786C;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.card {
-  background: white;
-  border-radius: 28px;
-  margin-top: 34px;
-  padding: 26px 22px;
-  box-shadow: 0 12px 35px rgba(77,56,27,.08);
-}
-
-.question {
-  font-size: 14px;
-  color: #92897D;
-  margin-bottom: 10px;
-}
-
-.food {
-  font-size: 27px;
-  font-weight: 800;
-  margin-bottom: 7px;
-}
-
-.info {
-  color: #81786C;
   font-size: 15px;
+  line-height: 1.65;
 }
 
 .main-button {
@@ -104,29 +86,162 @@ h1 {
   background: #FFB938;
   color: #2A241B;
   padding: 19px;
-  margin-top: 22px;
+  margin-top: 28px;
   border-radius: 20px;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 850;
   cursor: pointer;
 }
 
-.secondary-button {
+.main-button:disabled {
+  opacity: .65;
+}
+
+.status {
+  margin: 15px 5px 0;
+  color: #8D8276;
+  font-size: 14px;
+  min-height: 22px;
+}
+
+.results {
+  display: none;
+  margin-top: 30px;
+}
+
+.results.show { display: block; }
+
+.result-title {
+  font-size: 21px;
+  font-weight: 850;
+  margin-bottom: 14px;
+}
+
+.cards {
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  background: white;
+  border-radius: 22px;
+  padding: 18px;
+  text-align: left;
+  box-shadow: 0 9px 28px rgba(77,56,27,.07);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.restaurant {
+  font-size: 18px;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.tag {
+  flex-shrink: 0;
+  background: #F6EFE6;
+  padding: 6px 9px;
+  border-radius: 100px;
+  color: #756A5D;
+  font-size: 12px;
+}
+
+.meta {
+  margin-top: 8px;
+  color: #81786C;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.navigate {
+  display: block;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 14px;
+  text-decoration: none;
+  text-align: center;
+  background: #F5F1EB;
+  color: #393128;
+  font-weight: 750;
+}
+
+.pick-button {
+  width: 100%;
+  border: 0;
+  background: #29251F;
+  color: white;
+  padding: 17px;
+  margin-top: 16px;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.choice {
+  display: none;
+  background: #EAF4E6;
+  border-radius: 22px;
+  margin-top: 16px;
+  padding: 20px;
+  text-align: left;
+}
+
+.choice.show { display: block; }
+
+.choice-label {
+  font-size: 13px;
+  color: #66805F;
+}
+
+.choice-name {
+  font-size: 23px;
+  font-weight: 900;
+  margin-top: 5px;
+}
+
+.drink {
+  display: none;
+  background: #F0EAF8;
+  border-radius: 22px;
+  margin-top: 16px;
+  padding: 20px;
+  text-align: left;
+}
+
+.drink.show { display: block; }
+
+.drink-label {
+  color: #79678C;
+  font-size: 13px;
+}
+
+.drink-name {
+  font-size: 19px;
+  font-weight: 850;
+  margin-top: 5px;
+}
+
+.again {
   width: 100%;
   border: 0;
   background: transparent;
-  color: #756C60;
   padding: 17px;
-  margin-top: 6px;
-  font-size: 16px;
-  cursor: pointer;
+  color: #756C60;
+  font-size: 15px;
 }
 
 .hint {
   margin-top: 34px;
   text-align: center;
   color: #AAA094;
-  font-size: 13px;
+  font-size: 12px;
+  line-height: 1.6;
 }
 </style>
 </head>
@@ -137,79 +252,808 @@ h1 {
 
   <header class="header">
     <div class="logo">🍜 我要吃什麼</div>
-    <div class="location">📍 取得位置</div>
+    <button class="location" id="locationButton" onclick="getLocation()">
+      📍 取得位置
+    </button>
   </header>
 
-  <main class="hero">
+  <main>
 
-    <div class="emoji" id="emoji">🤔</div>
+    <section class="hero">
+      <div class="emoji" id="emoji">🤔</div>
 
-    <h1>今天<br>要吃什麼？</h1>
+      <h1>今天<br>要吃什麼？</h1>
 
-    <div class="subtitle">
-      不要再想半天了。<br>
-      讓我幫你決定。
-    </div>
-
-    <section class="card">
-
-      <div class="question">今天就吃這個</div>
-
-      <div class="food" id="food">
-        按下面讓我決定
+      <div class="subtitle">
+        不用再想半天。<br>
+        我從你附近真的有的店幫你挑。
       </div>
 
-      <div class="info" id="info">
-        之後會從你附近的餐廳挑選
-      </div>
-
-      <button class="main-button" onclick="chooseFood()">
-        🎲 幫我選一家
+      <button class="main-button" id="findButton" onclick="startSearch()">
+        🍽️ 幫我找吃的
       </button>
 
-      <button class="secondary-button" onclick="chooseFood()">
-        ↻ 不喜歡，換一家
+      <div class="status" id="status">
+        先允許定位，就可以開始
+      </div>
+    </section>
+
+    <section class="results" id="results">
+
+      <div class="result-title">
+        🍴 附近可以吃
+      </div>
+
+      <div class="cards" id="cards"></div>
+
+      <button class="pick-button" onclick="decideRestaurant()">
+        🎲 不想選，直接幫我決定
+      </button>
+
+      <div class="choice" id="choice"></div>
+
+      <div class="drink" id="drink"></div>
+
+      <button class="again" onclick="startSearch()">
+        ↻ 這些都不想吃，換一批
       </button>
 
     </section>
 
     <div class="hint">
-      未來會自動尋找步行約 5–10 分鐘的餐廳
+      目前使用免費開放地圖資料 · 不需要付費 API 或 AI Token
     </div>
 
   </main>
-
 </div>
 
 <script>
-const foods = [
-  ["🍜", "牛肉麵"],
-  ["🍛", "咖哩飯"],
-  ["🍱", "便當"],
-  ["🍣", "壽司"],
-  ["🍲", "火鍋"],
-  ["🍝", "義大利麵"],
-  ["🥟", "水餃"],
-  ["🍔", "漢堡"],
-  ["🍗", "雞肉飯"],
-  ["🥘", "韓式料理"]
+
+/* =========================
+   餐飲類型
+   一個選項只代表一種類型
+========================= */
+
+const FOOD_TYPES = [
+
+  ["🍜","陽春麵",["noodle","麵"]],
+  ["🍜","乾麵",["noodle","麵"]],
+  ["🍜","牛肉麵",["beef_noodle","牛肉麵"]],
+  ["🍚","滷肉飯",["rice","滷肉飯","魯肉飯"]],
+  ["🍚","肉燥飯",["rice","肉燥飯"]],
+  ["🥟","水餃",["dumpling","水餃"]],
+  ["🥟","鍋貼",["dumpling","鍋貼"]],
+  ["🥟","小籠包",["dumpling","小籠包"]],
+  ["🥟","蒸餃",["dumpling","蒸餃"]],
+  ["🥣","麵線",["noodle","麵線"]],
+  ["🍜","米粉",["noodle","米粉"]],
+  ["🍜","米苔目",["noodle","米苔目"]],
+  ["🥣","粥",["porridge","粥"]],
+  ["🍳","炒飯",["rice","炒飯"]],
+  ["🍜","炒麵",["noodle","炒麵"]],
+  ["🍱","便當",["bento","便當"]],
+  ["🍱","自助餐",["buffet","自助餐"]],
+  ["🍢","滷味",["滷味","魯味"]],
+  ["🍗","鹽酥雞",["fried_chicken","鹽酥雞"]],
+  ["🍳","熱炒",["chinese","熱炒"]],
+
+  ["🥩","牛排",["steak","牛排"]],
+  ["🥘","鐵板燒",["teppanyaki","鐵板燒"]],
+  ["🍲","火鍋",["hot_pot","火鍋"]],
+  ["🌶️","麻辣鍋",["hot_pot","麻辣鍋"]],
+  ["🌶️","麻辣燙",["hot_pot","麻辣燙"]],
+  ["🥩","燒肉",["barbecue","燒肉"]],
+
+  ["🍜","拉麵",["ramen","拉麵"]],
+  ["🍜","烏龍麵",["udon","烏龍麵"]],
+  ["🍣","壽司",["sushi","壽司"]],
+  ["🍚","丼飯",["japanese","丼飯"]],
+  ["🍛","日式咖哩",["japanese","curry","咖哩"]],
+  ["🥘","韓式料理",["korean","韓式"]],
+
+  ["🍝","義大利麵",["italian","pasta","義大利麵"]],
+  ["🍕","披薩",["pizza","披薩"]],
+  ["🍔","漢堡",["burger","漢堡"]],
+  ["🥞","早午餐",["brunch","早午餐"]],
+
+  ["🍜","越南河粉",["vietnamese","越南"]],
+  ["🥘","泰式料理",["thai","泰式"]],
+  ["🥟","港式料理",["hong_kong","港式"]],
+  ["🍗","海南雞飯",["海南雞"]],
+
+  ["🍔","麥當勞",["McDonald's","麥當勞"]],
+  ["🍗","肯德基",["KFC","肯德基"]],
+  ["🍔","摩斯漢堡",["MOS Burger","摩斯漢堡"]],
+  ["🍔","漢堡王",["Burger King","漢堡王"]],
+  ["🍗","頂呱呱",["TKK","頂呱呱"]],
+  ["🍕","拿坡里",["Napoli","拿坡里"]],
+
+  ["🍗","雞肉飯",["chicken","雞肉飯"]],
+  ["🍖","排骨飯",["排骨飯"]],
+  ["🍗","雞腿飯",["雞腿飯"]],
+  ["🐷","控肉飯",["控肉飯","焢肉飯"]],
+  ["🍛","咖哩飯",["curry","咖哩飯"]],
+  ["🍲","關東煮",["oden","關東煮"]],
+  ["🥪","三明治",["sandwich","三明治"]],
+  ["🌯","墨西哥料理",["mexican"]],
+  ["🍛","印度料理",["indian"]],
+  ["🍜","泰式河粉",["thai","pad_thai"]]
+
 ];
 
-function chooseFood() {
 
-  const pick =
-    foods[Math.floor(Math.random() * foods.length)];
+/* =========================
+   狀態
+========================= */
 
-  document.getElementById("emoji").textContent =
-    pick[0];
+let userLat = null;
+let userLon = null;
+let currentRestaurants = [];
+let selectedRestaurant = null;
 
-  document.getElementById("food").textContent =
-    pick[1];
 
-  document.getElementById("info").textContent =
-    "先吃這個吧！";
+/* =========================
+   定位
+========================= */
+
+function getLocation() {
+
+  const status = document.getElementById("status");
+  const button = document.getElementById("locationButton");
+
+  status.textContent = "正在取得你的位置…";
+
+  if (!navigator.geolocation) {
+    status.textContent = "這台裝置不支援定位。";
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+
+    position => {
+
+      userLat = position.coords.latitude;
+      userLon = position.coords.longitude;
+
+      button.textContent = "✓ 已取得位置";
+      button.classList.add("ready");
+
+      status.textContent =
+        "定位完成，現在可以幫你找附近的店。";
+
+    },
+
+    error => {
+
+      status.textContent =
+        "需要允許定位，才能搜尋你附近的餐廳。";
+
+    },
+
+    {
+      enableHighAccuracy: true,
+      timeout: 12000,
+      maximumAge: 60000
+    }
+
+  );
 
 }
+
+
+/* =========================
+   距離計算
+========================= */
+
+function distanceMeters(lat1, lon1, lat2, lon2) {
+
+  const R = 6371000;
+
+  const p1 = lat1 * Math.PI / 180;
+  const p2 = lat2 * Math.PI / 180;
+
+  const dp =
+    (lat2 - lat1) * Math.PI / 180;
+
+  const dl =
+    (lon2 - lon1) * Math.PI / 180;
+
+  const a =
+    Math.sin(dp / 2) ** 2 +
+    Math.cos(p1) *
+    Math.cos(p2) *
+    Math.sin(dl / 2) ** 2;
+
+  return Math.round(
+    2 * R *
+    Math.atan2(
+      Math.sqrt(a),
+      Math.sqrt(1 - a)
+    )
+  );
+
+}
+
+
+/* =========================
+   免費 OpenStreetMap 搜尋
+========================= */
+
+async function overpassQuery(query) {
+
+  const servers = [
+
+    "https://overpass.kumi.systems/api/interpreter",
+
+    "https://overpass-api.de/api/interpreter"
+
+  ];
+
+  for (const server of servers) {
+
+    try {
+
+      const response = await fetch(
+        server,
+        {
+          method: "POST",
+          body: new URLSearchParams({
+            data: query
+          })
+        }
+      );
+
+      if (response.ok) {
+        return await response.json();
+      }
+
+    } catch (e) {}
+
+  }
+
+  throw new Error("搜尋服務暫時無法使用");
+
+}
+
+
+/* =========================
+   搜尋餐廳
+========================= */
+
+async function startSearch() {
+
+  if (userLat === null) {
+
+    getLocation();
+
+    document.getElementById("status").textContent =
+      "取得位置後，再按一次「幫我找吃的」。";
+
+    return;
+  }
+
+  const button =
+    document.getElementById("findButton");
+
+  const status =
+    document.getElementById("status");
+
+  button.disabled = true;
+  button.textContent = "正在找附近好吃的…";
+
+  status.textContent =
+    "正在搜尋步行約 5–10 分鐘內的餐廳";
+
+  document.getElementById("results")
+    .classList.remove("show");
+
+  document.getElementById("choice")
+    .classList.remove("show");
+
+  document.getElementById("drink")
+    .classList.remove("show");
+
+  try {
+
+    const query = `
+      [out:json][timeout:20];
+
+      (
+        nwr["amenity"="restaurant"]
+          (around:1000,${userLat},${userLon});
+
+        nwr["amenity"="fast_food"]
+          (around:1000,${userLat},${userLon});
+
+        nwr["amenity"="food_court"]
+          (around:1000,${userLat},${userLon});
+      );
+
+      out center tags;
+    `;
+
+    const data =
+      await overpassQuery(query);
+
+    const found = [];
+    const names = new Set();
+
+    for (const place of data.elements || []) {
+
+      const tags = place.tags || {};
+
+      const name =
+        tags["name:zh"] ||
+        tags["name:zh-Hant"] ||
+        tags.name;
+
+      if (!name) continue;
+
+      const lat =
+        place.lat ??
+        place.center?.lat;
+
+      const lon =
+        place.lon ??
+        place.center?.lon;
+
+      if (lat == null || lon == null)
+        continue;
+
+      const distance =
+        distanceMeters(
+          userLat,
+          userLon,
+          lat,
+          lon
+        );
+
+      /*
+        約 5–10 分鐘步行。
+        目前以距離估算。
+        下一版再升級真正步行路線。
+      */
+
+      if (distance < 250 ||
+          distance > 850)
+        continue;
+
+      if (names.has(name))
+        continue;
+
+      names.add(name);
+
+      found.push({
+
+        name,
+        lat,
+        lon,
+        distance,
+
+        cuisine:
+          tags.cuisine || "",
+
+        brand:
+          tags.brand || "",
+
+        opening:
+          tags.opening_hours || ""
+
+      });
+
+    }
+
+    if (found.length === 0) {
+
+      throw new Error(
+        "附近暫時找不到足夠的餐廳資料"
+      );
+
+    }
+
+    /*
+      打亂結果
+    */
+
+    found.sort(
+      () => Math.random() - 0.5
+    );
+
+    currentRestaurants =
+      found.slice(0, 5);
+
+    renderRestaurants();
+
+    status.textContent =
+      `找到 ${found.length} 間附近餐廳`;
+
+    document.getElementById("results")
+      .classList.add("show");
+
+  }
+
+  catch (error) {
+
+    status.textContent =
+      "目前搜尋不到附近店家，請稍後再試一次。";
+
+  }
+
+  finally {
+
+    button.disabled = false;
+
+    button.textContent =
+      "🍽️ 幫我找吃的";
+
+  }
+
+}
+
+
+/* =========================
+   判斷料理類型
+========================= */
+
+function detectFoodType(restaurant) {
+
+  const text = (
+    restaurant.name + " " +
+    restaurant.cuisine + " " +
+    restaurant.brand
+  ).toLowerCase();
+
+  for (const type of FOOD_TYPES) {
+
+    const emoji = type[0];
+    const title = type[1];
+    const keywords = type[2];
+
+    for (const keyword of keywords) {
+
+      if (
+        text.includes(
+          keyword.toLowerCase()
+        )
+      ) {
+
+        return {
+          emoji,
+          title
+        };
+
+      }
+
+    }
+
+  }
+
+  return {
+    emoji: "🍴",
+    title: "餐廳"
+  };
+
+}
+
+
+/* =========================
+   顯示餐廳
+========================= */
+
+function renderRestaurants() {
+
+  const cards =
+    document.getElementById("cards");
+
+  cards.innerHTML = "";
+
+  currentRestaurants.forEach(
+    restaurant => {
+
+      const type =
+        detectFoodType(restaurant);
+
+      const walking =
+        Math.max(
+          4,
+          Math.round(
+            restaurant.distance / 75
+          )
+        );
+
+      const card =
+        document.createElement("article");
+
+      card.className = "card";
+
+      card.innerHTML = `
+
+        <div class="card-top">
+
+          <div>
+
+            <div class="restaurant">
+              ${escapeHTML(restaurant.name)}
+            </div>
+
+            <div class="meta">
+              🚶 約 ${walking} 分鐘
+              · ${restaurant.distance} 公尺
+            </div>
+
+          </div>
+
+          <div class="tag">
+            ${type.emoji}
+            ${type.title}
+          </div>
+
+        </div>
+
+        <a
+          class="navigate"
+          href="${appleMapsURL(restaurant)}"
+          target="_blank"
+        >
+          🧭 看地圖
+        </a>
+
+      `;
+
+      cards.appendChild(card);
+
+    }
+  );
+
+}
+
+
+/* =========================
+   直接幫我選
+========================= */
+
+function decideRestaurant() {
+
+  if (!currentRestaurants.length)
+    return;
+
+  selectedRestaurant =
+    currentRestaurants[
+      Math.floor(
+        Math.random() *
+        currentRestaurants.length
+      )
+    ];
+
+  const type =
+    detectFoodType(
+      selectedRestaurant
+    );
+
+  document.getElementById("emoji")
+    .textContent = type.emoji;
+
+  const choice =
+    document.getElementById("choice");
+
+  choice.innerHTML = `
+
+    <div class="choice-label">
+      🎯 不要再選了，今天就吃
+    </div>
+
+    <div class="choice-name">
+      ${escapeHTML(
+        selectedRestaurant.name
+      )}
+    </div>
+
+    <div class="meta">
+      ${type.emoji}
+      ${type.title}
+      · 🚶 約
+      ${Math.max(
+        4,
+        Math.round(
+          selectedRestaurant.distance / 75
+        )
+      )}
+      分鐘
+    </div>
+
+    <a
+      class="navigate"
+      href="${appleMapsURL(
+        selectedRestaurant
+      )}"
+      target="_blank"
+    >
+      🧭 帶我去吃
+    </a>
+
+  `;
+
+  choice.classList.add("show");
+
+  findDrink(
+    selectedRestaurant.lat,
+    selectedRestaurant.lon
+  );
+
+}
+
+
+/* =========================
+   找餐後飲料
+========================= */
+
+async function findDrink(lat, lon) {
+
+  const drink =
+    document.getElementById("drink");
+
+  drink.classList.add("show");
+
+  drink.innerHTML =
+    "🧋 正在找餐廳附近的飲料…";
+
+  try {
+
+    const query = `
+      [out:json][timeout:15];
+
+      (
+        nwr["shop"="beverages"]
+          (around:500,${lat},${lon});
+
+        nwr["amenity"="cafe"]
+          (around:500,${lat},${lon});
+
+        nwr["cuisine"="bubble_tea"]
+          (around:500,${lat},${lon});
+      );
+
+      out center tags;
+    `;
+
+    const data =
+      await overpassQuery(query);
+
+    const drinks = [];
+
+    for (const place of data.elements || []) {
+
+      const tags =
+        place.tags || {};
+
+      const name =
+        tags["name:zh"] ||
+        tags["name:zh-Hant"] ||
+        tags.name;
+
+      if (!name)
+        continue;
+
+      const dLat =
+        place.lat ??
+        place.center?.lat;
+
+      const dLon =
+        place.lon ??
+        place.center?.lon;
+
+      if (dLat == null ||
+          dLon == null)
+        continue;
+
+      drinks.push({
+
+        name,
+        lat: dLat,
+        lon: dLon,
+
+        distance:
+          distanceMeters(
+            lat,
+            lon,
+            dLat,
+            dLon
+          )
+
+      });
+
+    }
+
+    drinks.sort(
+      (a,b) =>
+        a.distance - b.distance
+    );
+
+    if (!drinks.length)
+      throw new Error();
+
+    const pick = drinks[0];
+
+    drink.innerHTML = `
+
+      <div class="drink-label">
+        🧋 吃完順便喝這間
+      </div>
+
+      <div class="drink-name">
+        ${escapeHTML(pick.name)}
+      </div>
+
+      <div class="meta">
+        從餐廳約 ${pick.distance} 公尺
+      </div>
+
+      <a
+        class="navigate"
+        href="${appleMapsURL(pick)}"
+        target="_blank"
+      >
+        🧭 飲料店導航
+      </a>
+
+    `;
+
+  }
+
+  catch (e) {
+
+    drink.innerHTML = `
+
+      <div class="drink-label">
+        🧋 餐後飲料
+      </div>
+
+      <div class="meta">
+        這附近目前沒有足夠的
+        免費地圖飲料店資料。
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =========================
+   Apple Maps
+========================= */
+
+function appleMapsURL(place) {
+
+  return (
+    "https://maps.apple.com/?" +
+    "daddr=" +
+    place.lat + "," +
+    place.lon +
+    "&q=" +
+    encodeURIComponent(place.name) +
+    "&dirflg=w"
+  );
+
+}
+
+
+/* =========================
+   防止店名破壞 HTML
+========================= */
+
+function escapeHTML(text) {
+
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
 </script>
 
 </body>
